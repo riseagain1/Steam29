@@ -1,0 +1,220 @@
+body {
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+  margin: 0;
+  background-color: #4e4e4e;
+}
+
+
+.header {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center; /* center the text */
+  background: #4e4e4e; /* grey background */
+  color: rgb(189, 4, 4); /* red text color */
+
+  background-image: url('../images/IMG_0526.PNG');
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
+
+}
+
+
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+  font-size: 150px;
+}
+
+.header p {
+    font-size: 60px;
+    font-weight: 700;
+    font-style: oblique;
+}
+
+.menubutton {
+	float: left; /* Make sure that the links stay side-by-side */
+	color: white; /* White text color */
+	text-align: center; /* Center the text */
+	padding: 6px 17px; /* Add some padding */
+	background-color: #7e0000; /* Dark background color */
+	display: None;
+	border-style: None;
+	font-size: 30px;
+}
+
+
+
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background-color: #7e0000; /* Dark background color */
+  position: sticky;
+  top: 0;
+  
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: #ddd; /* Grey background color */
+  color: black; /* Black text color */
+}
+
+
+
+
+
+/* Ensure proper sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 20%; /* Set the width of the sidebar */
+  background-color: #4d4d4d; /* Grey background color */
+  padding: 20px; /* Some padding */
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
+/* Main column */
+.main {
+  flex: 70%; /* Set the width of the main content */
+  background-color: rgb(0, 0, 0); /* White background color */
+  padding: 20px; /* Some padding */
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  line-height: 2;
+  text-align: center;
+}
+
+.imageMid {
+    display: inline-block;
+	width: 700px;
+}
+
+.imageR {
+	display: block;
+	width: 350px;
+	padding: 100px;
+	padding-bottom: 2px;
+	float: right;
+}
+
+.text {
+	display: table-cell; 
+	vertical-align: middle;
+	padding: 20px;
+	font-size: 30px;
+ }
+ 
+ .imageTextBox {
+	display: table; 
+	height: 400px; 
+	overflow: hidden; 
+	padding-bottom:20px;
+ }
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 420px) {
+
+.header h1 {
+    font-size: 70px;
+    }
+    
+    .header p {
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+
+  .main {
+    font-size: 20px;
+  }
+  
+  .navbar div {
+	max-height:0px;
+	overflow:hidden;
+	transition:0.5s;
+  }
+  
+  .menubutton {
+	  display: block;
+  }
+  
+  .home {
+	  padding-right: 56px !important;
+	  margin-bottom: 10px !important;
+  }
+
+  .imageR {
+	float: none;
+	width: 70%;
+	margin-left: auto;
+  	margin-right: auto;
+	padding:10px
+  }
+
+  .imageMid {
+    float: none;
+	width: 70%;
+	margin-left: auto;
+  	margin-right: auto;
+	padding:10px
+}
+
+  .text {
+	display: block; 
+	font-size: 20px;
+  }
+
+}
+
+
+
+
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background-color: #7e0000; /* Dark background color */
+  color: white;
+  font-style: italic;
+}

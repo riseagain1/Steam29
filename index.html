@@ -2,11 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="all"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steam 29</title>
 </head>
 <body>
-    <h1>Steam 29</h1>
-    <p>This is a simple static page hosting some basic information about our project.</p>
+
+    <div class="header">
+		<h1>STEAM 29</h1>
+		<p>A VR Horror Train Simulator</p>
+	</div>    
+
+    <div class="navbar">
+	
+		<button id = "m" class = "menubutton" onclick = "toggleMenu()">=</button>
+		
+		<a href="index.html" class = "home">HOME</a>
+		
+		<div id = "menu">
+			<a href="updates.html">UPDATES</a>
+			<a href="about.html">ABOUT US</a>
+			<a href="#">LINK</a>
+			<a href="#" class="right">STEAM</a>
+		</div>
+		
+	</div>
+	
+
+	<div class="row">
+	  <div class="side">DOWNLOAD HERE: <a href="https://google.com">build.zip</a>
+	  </div>
+
+	  <div class="main">
+        <p><b>This is a simple static page hosting of our 2024 CMPM 170 Series Senior Capstone at UCSC.</b></p>
+        <p> Goal: VR horror game that puts you in the seat of a steam train operator. </p>
+        <img class = "imageMid" src = "images/IMG_0523-dark.PNG" alt = "passenger car">
+        <div class = "imageTextBox">
+            <p class = "text" >
+                Story: You work a tiny night train by yourself, transporting passengers from town to town. It’s very quiet, cozy, and dark. Some passengers seem normal enough, but some you have to watch out for. Recent reports have noted that some unusual events have occurred on this specific train route.
+            </p>
+            <img class = "imageR" src = "images/busidallas-2.png" alt = "Business Passenger">
+            <center>One of the passengers</center>
+        </div>
+
+        
+	   </div>
+	</div>
+
+	<div class="footer">
+		<h3> Team 29 Studios @2024</h3>
+	</div>
+
+    <script type="text/javascript" src = "scripts/main.js"></script>
 </body>
 </html>
