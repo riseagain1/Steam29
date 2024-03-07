@@ -21,19 +21,21 @@ public class WindowEventScript : MonoBehaviour
     void Update()
     {
         // //Debug.Log("Door angle" + door.transform.rotation.eulerAngles.y);
-        if(window.transform.position.z > 1.2 && !played){
+        
+    }
+
+    public void WindowGrabbed(){
+        Debug.Log("window grabbed");
+        
+    }
+
+    public void WindowOpened(){
             played = true;
             Debug.Log("window opened");
             outhead.SetActive(true);
             light.SetActive(false);
             StartCoroutine(DisableInitialFace(0.2f));
             StartCoroutine(DisableAfterDelay(1.1f));
-        }
-    }
-
-    public void WindowGrabbed(){
-        Debug.Log("window grabbed");
-        
     }
 
     IEnumerator DisableInitialFace(float delay)
