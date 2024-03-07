@@ -18,12 +18,12 @@ public class ScareColliderScript : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
-{
-    // Check if the collider belongs to a specific object/tag
-    if(other.CompareTag("doorHandle"))
     {
-        Debug.Log("Entered Trigger with handle");
-        interactions.GetComponent<WindowEventScript>().WindowOpened();
+        // Check if the collider belongs to a specific object/tag
+        if(other.CompareTag("doorHandle"))
+        {
+            Debug.Log("Entered Trigger with handle");
+            interactions.GetComponent<WindowEventScript>().WindowOpened();
+        }
     }
-}
 }

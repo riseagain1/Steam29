@@ -107,7 +107,7 @@ public class bookEventScript : MonoBehaviour
             if(pageRightHingeJoint.angle > (174 + bookLeftHingeJoint.angle) 
             && pageRightMesh.enabled){
                 // turned right page to leftside(show next pages)
-                Debug.Log("Right page turned to left");
+                //Debug.Log("Right page turned to left");
                 
                 pageRightHingeJointLimits.max = 1; // move page back
                 pageRightMesh.enabled = false;
@@ -129,7 +129,7 @@ public class bookEventScript : MonoBehaviour
             if(pageLeftHingeJoint.angle < -170 
             && pageLeftMesh.enabled){
                 // turned left page to right side(show previous pages)
-                Debug.Log("Left page turned to right");
+                //Debug.Log("Left page turned to right");
 
                 pageLeftHingeJointLimits.min = -3 + bookLeftHingeJoint.angle; // move page back
                 pageLeftMesh.enabled = false;
@@ -165,12 +165,12 @@ public class bookEventScript : MonoBehaviour
     }
 
     public void BookLeftPanelGrabbed(){
-        Debug.Log("BookLeftPanel Grabbed");
+        //Debug.Log("BookLeftPanel Grabbed");
         
     }
 
     public void changePages(){
-        Debug.Log("Current left upper page:" + currentPage);
+        //Debug.Log("Current left upper page:" + currentPage);
 
         if(currentPage == -1){ // at start of book(initialize some things)
             // no left page
@@ -225,11 +225,11 @@ public class bookEventScript : MonoBehaviour
             // ------RIGHT SIDE-------
 
             // RIGHT UPPER
-            Debug.Log("spritelist length: " + spriteList.Count + " currentpage + 1: " + (currentPage + 1));
+            //Debug.Log("spritelist length: " + spriteList.Count + " currentpage + 1: " + (currentPage + 1));
             if(spriteList.Count <= (currentPage + 1)) { // no page found
                 //pageRightMesh.enabled = false;
                 //pageRightUpperSprite.enabled = false;
-                Debug.Log("right disabled");
+                //Debug.Log("right disabled");
             } else {
                 pageRightMesh.enabled = true;
                 pageRightUpperSprite.enabled = true;

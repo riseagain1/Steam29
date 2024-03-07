@@ -30,12 +30,14 @@ public class WindowEventScript : MonoBehaviour
     }
 
     public void WindowOpened(){
+        if(!played){
             played = true;
             Debug.Log("window opened");
             outhead.SetActive(true);
             light.SetActive(false);
             StartCoroutine(DisableInitialFace(0.2f));
             StartCoroutine(DisableAfterDelay(1.1f));
+        }
     }
 
     IEnumerator DisableInitialFace(float delay)
