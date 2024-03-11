@@ -25,6 +25,8 @@ public class SceneChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Awake();
+        
         Scene scene = SceneManager.GetActiveScene();
         Debug.Log("Active Scene is '" + scene.name + "'.");
 

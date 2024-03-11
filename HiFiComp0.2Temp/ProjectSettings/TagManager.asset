@@ -6,6 +6,7 @@ TagManager:
   tags:
   - doorHandle
   - trainTurner
+  - coal
   layers:
   - Default
   - TransparentFX
