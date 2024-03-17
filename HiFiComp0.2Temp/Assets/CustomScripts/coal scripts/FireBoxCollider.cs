@@ -24,8 +24,7 @@ public class FireBoxCollider : MonoBehaviour
         if(other.CompareTag("coal"))
         {
             Debug.Log("coal placed into firebox");
-            other.gameObject.SetActive(false);
-            //interactions.GetComponent<FireBoxScript>().();
+            interactions.GetComponent<FireBoxScript>().coalAddedToFire(other);
         }
     }
 }

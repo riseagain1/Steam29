@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7801560674538896362}
   - component: {fileID: 7145939291049369652}
   - component: {fileID: 7799318540461644773}
-  - component: {fileID: 8520620602561249182}
-  - component: {fileID: 1955639495451509420}
+  - component: {fileID: -4717418378544373697}
+  - component: {fileID: 3239070475616538550}
   m_Layer: 6
   m_Name: coal
   m_TagString: coal
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3567829126847356676}
   serializedVersion: 2
   m_LocalRotation: {x: 0.080952086, y: 0.66108596, z: -0.0017494038, w: 0.74592835}
-  m_LocalPosition: {x: -0.995, y: 1.7683, z: 1.6017}
+  m_LocalPosition: {x: -1.1064473, y: 1.7683, z: 0.99801433}
   m_LocalScale: {x: 0.109999985, y: 0.11, z: 0.109999985}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -108,7 +108,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8520620602561249182
+--- !u!54 &-4717418378544373697
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1955639495451509420
+--- !u!114 &3239070475616538550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
