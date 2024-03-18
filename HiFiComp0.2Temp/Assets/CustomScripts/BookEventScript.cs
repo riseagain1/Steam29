@@ -356,23 +356,28 @@ public class bookEventScript : MonoBehaviour
         // if left upper is new, then left page must be > -40
 
         Debug.Log("case value: " + caseValue);
-        outlineSparkles.Play();
+        if(!outlineSparkles.isPlaying){
+                outlineSparkles.Play();
+        } 
 
         switch (caseValue)
         {
             case 0: // right lower is new
                 if (pageRightHingeJoint.angle > 130){
                     outlinePage = -1;
+                    outlineCaseValue = -1;
                 }
                 break;
             case 1: // right upper is new
                 if (pageRightHingeJoint.angle < 50){
                     outlinePage = -1;
+                    outlineCaseValue = -1;
                 }
                 break;
             case 2: // left upper is new
                 if (pageLeftHingeJoint.angle > -40){
                     outlinePage = -1;
+                    outlineCaseValue = -1;
                 }
                 break;
             default: // random input or -1 case value??
