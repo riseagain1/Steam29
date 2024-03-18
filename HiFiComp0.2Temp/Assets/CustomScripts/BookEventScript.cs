@@ -5,11 +5,13 @@ using UnityEngine;
 public class bookEventScript : MonoBehaviour
 {
     public GameObject book;
+    public ParticleSystem outlineSparkles;
     public GameObject bookLeftPanel;
     private HingeJoint bookLeftHingeJoint;
 
     // right page
     public GameObject pageRight;
+    public GameObject pageRightOutline;
     private Collider pageRightCollider;
     private MeshRenderer pageRightMesh;
     private HingeJoint pageRightHingeJoint;
@@ -23,11 +25,13 @@ public class bookEventScript : MonoBehaviour
 
     // right under page
     public GameObject pageRightUnder;
+    public GameObject pageRightUnderOutline;
     public GameObject pageRightUnderSpriteHolder;
     private SpriteRenderer pageRightUnderSprite;
 
     // left page
     public GameObject pageLeft;
+    public GameObject pageLeftOutline;
     private Collider pageLeftCollider;
     private MeshRenderer pageLeftMesh;
     private HingeJoint pageLeftHingeJoint;
@@ -41,12 +45,15 @@ public class bookEventScript : MonoBehaviour
 
     // left under page
     public GameObject pageLeftUnder;
+    public GameObject pageLeftUnderOutline;
     public GameObject pageLeftUnderSpriteHolder;
     private SpriteRenderer pageLeftUnderSprite;
 
     // list of page sprites
     public List<Sprite> spriteList = new List<Sprite>();
     private int currentPage;
+    public int outlinePage = -1; // no page selected, no outline
+    private int outlineCaseValue = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -84,10 +91,28 @@ public class bookEventScript : MonoBehaviour
 
     // Update is called once per physics frame
     void Update()
-    {  
+    {
+        if (outlineCaseValue != -1){
+            conditionToEndNotif(outlineCaseValue);
+        }
         
-        //Debug.Log("Book Left Panel angle" + bookLeftPanel.transform.localEulerAngles.z);
-        if(bookLeftHingeJoint.angle < -170){
+
+        if (outlinePage != -1 ){ // new page added, enable particles
+            if(!outlineSparkles.isPlaying){
+                outlineSparkles.Play();
+            } 
+        } else { // no new pages
+            pageLeftOutline.SetActive(false);
+            pageLeftUnderOutline.SetActive(false);
+            pageRightOutline.SetActive(false);
+            pageRightUnderOutline.SetActive(false);
+        }
+
+        //Debug.Log("Right page angle: " + pageRightHingeJoint.angle + " left page angle: " + pageLeftHingeJoint.angle);
+        
+        //Debug.Log("Book Left Panel angle" + bookLeftHingeJoint.angle);
+
+        if(bookClosed()){
             //Debug.Log("book closed");
             pageRightCollider.enabled = false;
             pageLeftCollider.enabled = false;
@@ -105,7 +130,7 @@ public class bookEventScript : MonoBehaviour
             pageRightHingeJoint.limits = pageRightHingeJointLimits;
             
             if(pageRightHingeJoint.angle > (174 + bookLeftHingeJoint.angle) 
-            && pageRightMesh.enabled){
+            && pageRightMesh.enabled && spriteList.Count >= 3){
                 // turned right page to leftside(show next pages)
                 //Debug.Log("Right page turned to left");
                 
@@ -171,6 +196,10 @@ public class bookEventScript : MonoBehaviour
 
     public void changePages(){
         //Debug.Log("Current left upper page:" + currentPage);
+        pageLeftOutline.SetActive(false);
+        pageLeftUnderOutline.SetActive(false);
+        pageRightOutline.SetActive(false);
+        pageRightUnderOutline.SetActive(false);
 
         if(currentPage == -1){ // at start of book(initialize some things)
             // no left page
@@ -179,14 +208,44 @@ public class bookEventScript : MonoBehaviour
             pageLeftLowerSprite.enabled = false;
             pageLeftUnder.SetActive(false);
 
-            pageRightMesh.enabled = true;
-            pageRightUpperSprite.enabled = true;
-            pageRightLowerSprite.enabled = true;
-            pageRightUnder.SetActive(true);
-            pageRightUnderSprite.enabled = true;
-            pageRightUpperSprite.sprite = spriteList[0];
-            pageRightLowerSprite.sprite = spriteList[1];
-            pageRightUnderSprite.sprite = spriteList[2];
+            if (spriteList.Count >= 1){ // atleast 1 page exists
+                pageRightMesh.enabled = true;
+                pageRightUpperSprite.enabled = true;
+                pageRightUpperSprite.sprite = spriteList[0];
+                if(outlinePage == 0){
+                    pageRightOutline.SetActive(true);
+                    outlineCaseValue = 1; // right upper is new page CASE 1
+                }
+
+                if(spriteList.Count >= 2){ // atleast 2 pages exists
+                    pageRightLowerSprite.enabled = true;
+                    pageRightLowerSprite.sprite = spriteList[1];
+                    
+                    if(outlinePage == 1){
+                        pageRightOutline.SetActive(true);
+                        outlineCaseValue = 0; // right lower is new page CASE 0
+                    }
+
+                    if (spriteList.Count >= 3){ // atleast 3 pages exists
+                        pageRightUnder.SetActive(true);
+                        pageRightUnderSprite.enabled = true;
+                        pageRightUnderSprite.sprite = spriteList[2];
+
+                        if(outlinePage == 2){
+                            pageRightUnderOutline.SetActive(true);
+                        }
+
+                    }
+                }
+            } else { // no right page either
+                pageRightMesh.enabled = false;
+                pageRightUpperSprite.enabled = false;
+                pageRightLowerSprite.enabled = false;
+                pageRightUnder.SetActive(false);
+            }
+
+            
+            
         }
 
         if(currentPage >= 1){ // past start, now have left page
@@ -200,6 +259,10 @@ public class bookEventScript : MonoBehaviour
                 pageLeftMesh.enabled = true;
                 pageLeftUpperSprite.enabled = true;
                 pageLeftUpperSprite.sprite = spriteList[currentPage];
+                if(outlinePage == currentPage){
+                    pageLeftOutline.SetActive(true);
+                    outlineCaseValue = 2; // left upper is new page CASE 2
+                }
             }
 
             // LEFT LOWER
@@ -208,6 +271,9 @@ public class bookEventScript : MonoBehaviour
             } else {
                 pageLeftLowerSprite.enabled = true;
                 pageLeftLowerSprite.sprite = spriteList[currentPage - 1];
+                if(outlinePage == currentPage - 1){
+                    pageLeftOutline.SetActive(true);
+                }
             }
 
             // LEFT UNDER
@@ -218,6 +284,9 @@ public class bookEventScript : MonoBehaviour
                 pageLeftUnder.SetActive(true);
                 pageLeftUnderSprite.enabled = true;
                 pageLeftUnderSprite.sprite = spriteList[currentPage - 2];
+                if(outlinePage == currentPage - 2){
+                    pageLeftUnderOutline.SetActive(true);
+                }
             }
 
             
@@ -234,6 +303,10 @@ public class bookEventScript : MonoBehaviour
                 pageRightMesh.enabled = true;
                 pageRightUpperSprite.enabled = true;
                 pageRightUpperSprite.sprite = spriteList[currentPage + 1];
+                if(outlinePage == currentPage + 1){
+                    pageRightOutline.SetActive(true);
+                    outlineCaseValue = 1; // right upper is new page CASE 1
+                }
             }
 
             // RIGHT LOWER
@@ -242,6 +315,10 @@ public class bookEventScript : MonoBehaviour
             } else { // page found
                 pageRightLowerSprite.enabled = true;
                 pageRightLowerSprite.sprite = spriteList[currentPage + 2];
+                if(outlinePage == currentPage + 2){
+                    pageRightOutline.SetActive(true);
+                    outlineCaseValue = 0; // right lower is new page CASE 0
+                }
             }
 
 
@@ -253,9 +330,62 @@ public class bookEventScript : MonoBehaviour
                 pageRightUnder.SetActive(true);
                 pageRightUnderSprite.enabled = true;
                 pageRightUnderSprite.sprite = spriteList[currentPage + 3];
+                if(outlinePage == currentPage + 3){
+                    pageRightUnderOutline.SetActive(true);
+                }
             }
             
             
         }
+    }
+
+    public void addPage(Sprite page){
+        spriteList.Add(page);
+        changePages();
+        Debug.Log("ADDED PAGE TO NOTEBOOK");
+    }
+
+    public void conditionToEndNotif(int caseValue){ // end highlighting/outlining of new page
+        if(bookLeftHingeJoint.angle < -80){
+            return; // don't end anything if book is slightly closed
+        }
+        // if right lower sprite is new. then right page must be at least > 130
+
+        // if sprite upper right is new, right page angle must be < 50
+
+        // if left upper is new, then left page must be > -40
+
+        Debug.Log("case value: " + caseValue);
+        outlineSparkles.Play();
+
+        switch (caseValue)
+        {
+            case 0: // right lower is new
+                if (pageRightHingeJoint.angle > 130){
+                    outlinePage = -1;
+                }
+                break;
+            case 1: // right upper is new
+                if (pageRightHingeJoint.angle < 50){
+                    outlinePage = -1;
+                }
+                break;
+            case 2: // left upper is new
+                if (pageLeftHingeJoint.angle > -40){
+                    outlinePage = -1;
+                }
+                break;
+            default: // random input or -1 case value??
+                Debug.Log("error invalid input to end");
+                break;
+        }
+
+    }
+
+    public bool bookClosed(){
+        if(bookLeftHingeJoint.angle < -170){
+            return true;
+        }
+        return false;
     }
 }
