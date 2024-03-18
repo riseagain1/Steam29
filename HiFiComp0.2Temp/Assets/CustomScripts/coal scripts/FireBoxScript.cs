@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireBoxScript : MonoBehaviour
 {
+    public bool tutorial;
     // https://learn.unity.com/tutorial/introduction-to-object-pooling#
     public GameObject poolObj;
     //public GameObject poolHolder;
@@ -54,6 +55,10 @@ public class FireBoxScript : MonoBehaviour
         // // enable first one
         // pool[0].SetActive(true);
         // currentIndex = 1;
+
+        if (!tutorial){
+            enableFirstCoal();
+        }
 
         dialAngle = 135; // empty
         GOAL_dialAngle = 120; // set to almost empty

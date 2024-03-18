@@ -16,6 +16,8 @@ public class TicketAnimator : MonoBehaviour
         if (!isAnimationPlaying)
         {
             animator.Play("ticketout");
+            isAnimationPlaying = true; // needed to switch this boolean to true, or else infinitely goes to start
+
         }
     }
 }

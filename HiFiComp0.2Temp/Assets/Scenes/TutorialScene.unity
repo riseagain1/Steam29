@@ -47668,6 +47668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298dc00b1976b7b42b60960e7ac820b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorial: 1
   poolObj: {fileID: 3567829126847356676, guid: 0ee6e76f77cce1449a67927f6d69768d, type: 3}
   pool: []
   dialHand: {fileID: 1385887892}
