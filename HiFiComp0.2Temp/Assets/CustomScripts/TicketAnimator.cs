@@ -18,6 +18,14 @@ public class TicketAnimator : MonoBehaviour
             animator.Play("ticketout");
             isAnimationPlaying = true; // needed to switch this boolean to true, or else infinitely goes to start
 
+     StartCoroutine(ResetAnimationFlagAfterDelay());
         }
+    }
+
+    private IEnumerator ResetAnimationFlagAfterDelay()
+    {
+        isAnimationPlaying = true;
+        yield return new WaitForSeconds(5.0f); // Adjust this duration to match your animation's length
+        isAnimationPlaying = false;
     }
 }

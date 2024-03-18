@@ -1447,13 +1447,13 @@ Transform:
   m_GameObject: {fileID: 43573351}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6779162, y: -0.23852398, z: 0.25768363, w: 0.64586}
-  m_LocalPosition: {x: 0.712, y: 1.618, z: -0.609}
-  m_LocalScale: {x: 0.07155095, y: 0.83515, z: 0.12598}
+  m_LocalPosition: {x: 0.93200004, y: 0.61800003, z: -0.609}
+  m_LocalScale: {x: 0.07155095, y: 0.83515006, z: 0.12598}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1557895008}
   - {fileID: 113195850}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1758650362}
   m_LocalEulerAnglesHint: {x: 86.974, y: 128.586, z: 169.682}
 --- !u!1 &44650045
 GameObject:
@@ -27921,6 +27921,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a701eb9a851504692667686325e85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &956947304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7990873191126656718, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+  m_PrefabInstance: {fileID: 1097837167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &956947309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956947304}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &958612735
 GameObject:
   m_ObjectHideFlags: 0
@@ -30599,6 +30625,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7990873191231833679, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1097837170}
+    - targetCorrespondingSourceObject: {fileID: 7990873191126656718, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 956947309}
   m_SourcePrefab: {fileID: 100100000, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
 --- !u!1 &1097837168 stripped
 GameObject:
@@ -45906,6 +45935,7 @@ GameObject:
   - component: {fileID: 1557895010}
   - component: {fileID: 1557895009}
   - component: {fileID: 1557895013}
+  - component: {fileID: 1557895014}
   m_Layer: 0
   m_Name: Ticket
   m_TagString: Untagged
@@ -45922,7 +45952,7 @@ Transform:
   m_GameObject: {fileID: 1557895007}
   serializedVersion: 2
   m_LocalRotation: {x: -0.71841085, y: -0.00470817, z: -0.0035848161, w: 0.6955939}
-  m_LocalPosition: {x: -0.53, y: -0.13, z: 0.1}
+  m_LocalPosition: {x: -0.31, y: -0.137, z: 0.12}
   m_LocalScale: {x: 1.244565, y: 0.018145103, z: 0.18914479}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45964,7 +45994,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -46030,6 +46060,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de9ae8d3dc18b0c4490ca87ef749aa9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1557895014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557895007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7427021ae310bc0439d3503b73d5a1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1562129951
@@ -48565,6 +48607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298dc00b1976b7b42b60960e7ac820b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorial: 0
   poolObj: {fileID: 3567829126847356676, guid: 0ee6e76f77cce1449a67927f6d69768d, type: 3}
   pool: []
   dialHand: {fileID: 1385887892}
@@ -51300,6 +51343,7 @@ Transform:
   - {fileID: 963641617}
   - {fileID: 1878238385}
   - {fileID: 2108908516}
+  - {fileID: 43573355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760068722
@@ -60039,4 +60083,3 @@ SceneRoots:
   - {fileID: 432884791}
   - {fileID: 1322707588}
   - {fileID: 1507725699}
-  - {fileID: 43573355}
