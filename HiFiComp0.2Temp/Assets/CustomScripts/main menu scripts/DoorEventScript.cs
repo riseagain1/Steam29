@@ -23,12 +23,24 @@ public class DoorEventScript : MonoBehaviour
             Debug.Log("Door opened");
             RenderSettings.skybox = BadSkyboxMaterial;
             DirLight.SetActive(false);
-            button.SetActive(true);
+            //button.SetActive(true);
+
+            StartCoroutine(MyFunctionWithDelay(2f));
+            
         }
     }
 
     public void DoorGrabbed(){
         Debug.Log("Door grabbed");
         
+    }
+
+    IEnumerator MyFunctionWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Your code here
+        Debug.Log("Function called after 2 seconds.");
+        GameObject.Find("SceneChanger").GetComponent<SceneChanger>().startTutorial();
     }
 }

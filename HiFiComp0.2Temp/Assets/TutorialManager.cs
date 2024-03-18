@@ -124,7 +124,17 @@ public class TutorialManager : MonoBehaviour
             && !tutorialBrakeLever.activeSelf
             && !tutorialThrottle.activeSelf){
                 Debug.Log("TUTORIAL PASSED!");
+                StartCoroutine(MyFunctionWithDelayHI(2f));
             }
         }
+    }
+
+    IEnumerator MyFunctionWithDelayHI(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Your code here
+        Debug.Log("Function called after 2 seconds.");
+        GameObject.Find("SceneChanger").GetComponent<SceneChanger>().startGame();
     }
 }

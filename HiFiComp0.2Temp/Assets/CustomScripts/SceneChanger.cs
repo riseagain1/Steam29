@@ -46,7 +46,12 @@ public class SceneChanger : MonoBehaviour
 
     public void startGame(){
         Debug.Log("Starting game");
-        SceneManager.LoadScene("GameplayScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameplaySceneBye", LoadSceneMode.Single);
+        SceneManager.UnloadSceneAsync("TutorialScene");
+    }
+
+    public void startTutorial(){
+        SceneManager.LoadScene("TutorialScene", LoadSceneMode.Single);
         SceneManager.UnloadSceneAsync("MenuScene");
     }
 
